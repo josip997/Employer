@@ -1,0 +1,49 @@
+﻿@model Employer.Models.UpdateEmployeeViewModel
+@{
+}
+
+<form method="post" action="View" class="mt-5">
+
+  <h1>Edit employee</h1>
+
+  <div class="form-group">
+    <input type="hidden" class="form-control" asp-for="Id">
+  </div>
+
+  <div class="form-group">
+    <label for="" class="form-label">Name</label>
+    <input type="text" class="form-control" asp-for="Name">
+    @Html.ValidationMessageFor(e => e.Name, null, new {@class="text-danger"}) 
+  </div>
+
+  <div class="form-group">
+    <label for="" class="form-label">Email adress</label>
+    <input type="email" class="form-control" asp-for="Email">
+    @Html.ValidationMessageFor(e => e.Email, null, new {@class="text-danger"}) 
+  </div>
+
+  <div class="form-group">
+    <label for="" class="form-label">Salary</label>
+    <input type="number" class="form-control" asp-for="Salary">
+    @Html.ValidationMessageFor(e => e.Salary, null, new {@class="text-danger"}) 
+  </div>
+
+  <div class="form-group">
+    <label for="" class="form-label">Date of birth</label>
+    <input type="date" class="form-control" asp-for="DateOfBirth">
+    @Html.ValidationMessageFor(e => e.DateOfBirth, null, new {@class="text-danger"}) 
+  </div>
+
+  <div class="form-group">
+    <label for="" class="form-label">Department</label>
+    @Html.DropDownListFor(x => Model.DepartmentId, new SelectList(Model.Departments, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Department"})
+    @Html.ValidationMessageFor(e => e.DepartmentId, null, new {@class="text-danger"}) 
+  </div>
+
+
+  <button type="submit" class="btn btn-primary mt-5">Submit</button>
+
+  <button type="submit" class="btn btn-danger mt-5" 
+      asp-action="Delete"
+      asp-controller="Employees">Delete</button>
+</form>

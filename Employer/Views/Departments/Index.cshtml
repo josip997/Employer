@@ -1,0 +1,28 @@
+﻿@model List<Employer.Models.Domain.Department>
+@{
+}
+
+<h1>Departments</h1>
+
+
+<a class="btn btn-primary mt-5" 
+    asp-area="" asp-controller="Departments" asp-action="Add">Add department</a>
+
+<table  class="table"
+    <thead>
+        <tr>
+            <th>Cipher</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var dep in Model)
+        {
+            <tr>
+                <td>@dep.Cipher</td>
+                <td>@dep.Name</td>
+                <td><a href="Departments/View/@dep.Id">View</a></td>
+            </tr>  
+        }
+    </tbody>
+</table>
